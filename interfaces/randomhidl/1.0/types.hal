@@ -1,0 +1,6 @@
+package vendor.hitachi.randomhidl@1.0;
+
+enum Result : int32_t {
+    OK,
+    PERMISSION_DENIED                   = -1,
+};

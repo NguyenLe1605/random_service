@@ -1,0 +1,7 @@
+package vendor.hitachi.randomhidl@1.0;
+
+interface IRandomHidl {
+  generateRandomBytes(uint32_t length) generates (Result result, vec<uint8_t> ret);
+  updateEntropyBool(string nonce) generates (Result result);
+  getEntropy() generates (int32_t ret);
+};

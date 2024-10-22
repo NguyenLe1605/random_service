@@ -1,0 +1,35 @@
+cc_defaults {
+  name: "vendor.hitachi.randomhidl@1.0-defaults",
+  defaults: ["hidl_defaults"],
+  relative_install_path: "hw",
+  shared_libs: [
+    "libhidlbase",
+    "libhidltransport",
+    "libhwbinder",
+    "libutils",
+    "vendor.hitachi.randomhidl@1.0",
+  ],
+  vendor: true,
+  proprietary: true,
+}
+
+cc_library {
+  name: "vendor.hitachi.randomhidl@1.0-impl",
+  defaults: ["vendor.hitachi.randomhidl@1.0-defaults"],
+  srcs: [
+  "RandomHidl.cpp",
+  ],
+}
+
+cc_binary {
+  name: "vendor.hitachi.randomhidl@1.0-service",
+  defaults: ["vendor.hitachi.randomhidl@1.0-defaults"],
+  init_rc: ["vendor.hitachi.randomhidl@1.0-service.rc"],
+  srcs: ["service.cpp"],
+  static_libs: [
+    "vendor.hitachi.randomhidl@1.0-impl",
+  ],
+  proprietary: true,
+  vendor: true,
+  vintf_fragments: ["vendor.hitachi.randomhidl@1.0-service.xml"],
+}
